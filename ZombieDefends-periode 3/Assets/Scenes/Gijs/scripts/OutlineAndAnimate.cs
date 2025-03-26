@@ -5,9 +5,10 @@ using UnityEngine;
 public class OutlineManager : MonoBehaviour
 {
     public string targetTag = "OutlineTarget"; // Tag for objects that should be outlined
-    public Material outlineMaterial; // Assign an outline material in Inspector
+    public Material outlineMaterial; // Outline effect material
     private GameObject currentTarget;
-    private Material originalMaterial;
+    private Renderer currentRenderer;
+    private Material[] originalMaterials;
 
     void Update()
     {
@@ -17,7 +18,6 @@ public class OutlineManager : MonoBehaviour
 
     void HandleHover()
     {
-        // Raycast from mouse position
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
@@ -25,32 +25,30 @@ public class OutlineManager : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
 
-            // Check if the object has the correct tag
             if (hitObject.CompareTag(targetTag))
             {
-                if (currentTarget != hitObject) // If it's a new object, update it
+                if (currentTarget != hitObject)
                 {
                     ResetOutline();
                     currentTarget = hitObject;
+                    currentRenderer = currentTarget.GetComponent<Renderer>();
 
-                    Renderer rend = currentTarget.GetComponent<Renderer>();
-                    if (rend != null)
+                    if (currentRenderer != null)
                     {
-                        originalMaterial = rend.material;
-                        rend.material = outlineMaterial; // Apply outline
+                        originalMaterials = currentRenderer.materials;
+                        ApplyOutline();
                     }
                 }
                 return;
             }
         }
 
-        // Reset if no valid target
         ResetOutline();
     }
 
     void HandleClick()
     {
-        if (Input.GetMouseButtonDown(0) && currentTarget != null) // Left mouse click
+        if (Input.GetMouseButtonDown(0) && currentTarget != null)
         {
             Animator anim = currentTarget.GetComponent<Animator>();
             if (anim != null)
@@ -60,15 +58,23 @@ public class OutlineManager : MonoBehaviour
         }
     }
 
+    void ApplyOutline()
+    {
+        if (currentRenderer != null && outlineMaterial != null)
+        {
+            // Add outline without removing original material
+            Material[] newMaterials = new Material[originalMaterials.Length + 1];
+            originalMaterials.CopyTo(newMaterials, 0);
+            newMaterials[newMaterials.Length - 1] = outlineMaterial;
+            currentRenderer.materials = newMaterials;
+        }
+    }
+
     void ResetOutline()
     {
-        if (currentTarget != null)
+        if (currentTarget != null && currentRenderer != null)
         {
-            Renderer rend = currentTarget.GetComponent<Renderer>();
-            if (rend != null)
-            {
-                rend.material = originalMaterial; // Restore original material
-            }
+            currentRenderer.materials = originalMaterials;
             currentTarget = null;
         }
     }
