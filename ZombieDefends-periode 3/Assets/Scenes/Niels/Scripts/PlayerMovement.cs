@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -44,6 +45,10 @@ public class PlayerMovement : MonoBehaviour
     {
         MyInput();
         CheckGrounded();
+        if (Input.GetButtonDown("Jump"))
+        {
+            print("jumped");
+        }
     }
 
     private void FixedUpdate()
@@ -63,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && readyToJump && grounded)
         {
+           
             readyToJump = false;
 
             Jump();
@@ -70,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    
     private void MovePlayer()
     {
         moveDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
@@ -84,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+   
     private void CheckGrounded()
     {
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
