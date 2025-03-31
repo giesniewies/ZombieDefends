@@ -811,7 +811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: OutlineTarget
-  outlineMaterial: {fileID: 2100000, guid: 311313efa011949e98b6761d652ad13c, type: 2}
+  outlineMaterial: {fileID: 2100000, guid: 3cadb8ba17665b249aba8959cd99599a, type: 2}
 --- !u!4 &1917595768
 Transform:
   m_ObjectHideFlags: 0

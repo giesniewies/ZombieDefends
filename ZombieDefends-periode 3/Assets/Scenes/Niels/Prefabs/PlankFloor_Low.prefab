@@ -68,8 +68,50 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlankFloor_Low
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1726ab41939245c4f90b5ebeaaa270dc,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 1726ab41939245c4f90b5ebeaaa270dc,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ground
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 1726ab41939245c4f90b5ebeaaa270dc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8729705795517355572}
   m_SourcePrefab: {fileID: 100100000, guid: 1726ab41939245c4f90b5ebeaaa270dc, type: 3}
+--- !u!1 &7946100920682463578 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1726ab41939245c4f90b5ebeaaa270dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7099732939224906763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &8729705795517355572
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7946100920682463578}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8651911914926732462, guid: 1726ab41939245c4f90b5ebeaaa270dc, type: 3}

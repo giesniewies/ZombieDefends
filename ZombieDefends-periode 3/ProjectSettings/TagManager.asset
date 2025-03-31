@@ -5,16 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - OutlineTarget
+  - InventorySlot
+  - Ground
+  - Head
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
