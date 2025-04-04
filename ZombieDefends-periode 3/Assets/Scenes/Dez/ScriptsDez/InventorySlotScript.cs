@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using Unity.VisualScripting;
 
 public class InventorySlotScript : MonoBehaviour, IPointerEnterHandler
 {
@@ -63,5 +64,11 @@ public class InventorySlotScript : MonoBehaviour, IPointerEnterHandler
             itemNameText.text = "-";
             itemDescriptionText.text = "-";
         }
+    }
+
+    public void DestroyInSlot()
+    {
+        Destroy(itemInSlot.gameObject);
+        itemInSlot= null;
     }
 }

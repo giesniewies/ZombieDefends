@@ -8,7 +8,5 @@ public class ItemScript : MonoBehaviour
     
     public string itemName;
     public string itemDescription;
-    public bool potionOfHealth;
-    public bool potionOfSpeed;
 }
 

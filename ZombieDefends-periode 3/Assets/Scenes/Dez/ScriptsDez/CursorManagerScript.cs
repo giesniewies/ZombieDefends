@@ -12,7 +12,6 @@ public class CursorManagerScript : MonoBehaviour
     public InventorySlotScript lastSlot;
     public InventorySlotScript inventorySlotScript;
     public InventorySlotScript[] slots;
-    public ItemScript itemToPickUp;
     public CanvasGroup inventoryCanvasGroup;
     public bool isInventoryOpen;
     bool found = false;
@@ -34,7 +33,7 @@ public class CursorManagerScript : MonoBehaviour
             itemRect.position = mousePos;
         }
 
-        if (Input.GetButtonDown("Cancel"))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             if (itemInHand != null)
             {
@@ -49,12 +48,6 @@ public class CursorManagerScript : MonoBehaviour
             {
                 OpenInventory();
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && itemToPickUp != null)
-        {
-            FindEmptySlot(itemToPickUp);
-            itemToPickUp = null;
         }
     }
 

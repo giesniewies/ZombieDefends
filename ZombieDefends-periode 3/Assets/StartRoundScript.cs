@@ -23,6 +23,10 @@ public class StartRoundScript : MonoBehaviour
         {
             bed.SetActive(true); // Allow player to start next round
         }
+        if (Input.GetKey(KeyCode.P))
+        {
+            StartNewRound();
+        }
     }
 
     public void StartNewRound()

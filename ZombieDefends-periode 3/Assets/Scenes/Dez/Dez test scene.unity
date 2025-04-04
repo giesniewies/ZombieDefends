@@ -987,6 +987,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91c4f18693fab8a44b8c2e1a079f54a8, type: 3}
+--- !u!1001 &284840222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633355807385883482, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7880858122572277843, guid: 7aa152da05c7d1946bffb1e60a08b8fd,
+        type: 3}
+      propertyPath: m_Name
+      value: Zombie
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7aa152da05c7d1946bffb1e60a08b8fd, type: 3}
 --- !u!224 &311159126 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5549080117951748519, guid: 91c4f18693fab8a44b8c2e1a079f54a8,
@@ -2144,7 +2212,7 @@ MonoBehaviour:
   camRotate: {x: 0, y: 0, z: 0}
   cam: {fileID: 966968243}
   speed: 10
-  sensitivity: 80
+  sensitivity: 250
 --- !u!54 &742339217
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2280,6 +2348,8 @@ MonoBehaviour:
     type: 3}
   spawnedObject: {fileID: 0}
   touchedObject: {fileID: 0}
+  offHandSlot: {fileID: 1163041259}
+  player: {fileID: 0}
 --- !u!224 &744704709 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5549080117951748519, guid: 91c4f18693fab8a44b8c2e1a079f54a8,
@@ -3546,6 +3616,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91c4f18693fab8a44b8c2e1a079f54a8, type: 3}
+--- !u!114 &1163041259 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8974072069265615043, guid: 91c4f18693fab8a44b8c2e1a079f54a8,
+    type: 3}
+  m_PrefabInstance: {fileID: 680845605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7112f2b5185f6b645aeca440aaf36ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1173632052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4319,10 +4401,9 @@ MonoBehaviour:
   - {fileID: 899284086}
   - {fileID: 2047445206}
   - {fileID: 652756983}
-  itemToPickUp: {fileID: 0}
   inventoryCanvasGroup: {fileID: 0}
   isInventoryOpen: 0
-  offHandScript: {fileID: 0}
+  offHandScript: {fileID: 742339222}
 --- !u!4 &1452035810
 Transform:
   m_ObjectHideFlags: 0
@@ -6137,3 +6218,4 @@ SceneRoots:
   - {fileID: 945183048}
   - {fileID: 1031587609}
   - {fileID: 1003198993}
+  - {fileID: 284840222}
