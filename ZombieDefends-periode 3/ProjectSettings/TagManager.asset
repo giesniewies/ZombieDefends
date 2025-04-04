@@ -9,6 +9,9 @@ TagManager:
   - Ground
   - Head
   - Enemy
+  - PotionOfHealth
+  - PotionOfSpeed
+  - Hut
   layers:
   - Default
   - TransparentFX

@@ -15,6 +15,8 @@ public class CursorManagerScript : MonoBehaviour
     public ItemScript itemToPickUp;
     public CanvasGroup inventoryCanvasGroup;
     public bool isInventoryOpen;
+    bool found = false;
+    public OffHandScript offHandScript;
 
     private void Start()
     {
@@ -27,13 +29,9 @@ public class CursorManagerScript : MonoBehaviour
 
         if (itemInHand != null)
         {
+            // Update the item position directly with mouse position
             RectTransform itemRect = itemInHand.GetComponent<RectTransform>();
-
-            Vector2 localPoint;
-            if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, mousePos, canvas.GetComponent<Canvas>().worldCamera, out localPoint))
-            {
-                itemRect.anchoredPosition = localPoint;
-            }
+            itemRect.position = mousePos;
         }
 
         if (Input.GetButtonDown("Cancel"))
@@ -53,12 +51,13 @@ public class CursorManagerScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && itemToPickUp != null)
         {
             FindEmptySlot(itemToPickUp);
-            print("picking up " + itemToPickUp.gameObject.name);
+            itemToPickUp = null;
         }
     }
+
     public void CloseInventory()
     {
         inventoryCanvasGroup.alpha = 0f;
@@ -75,16 +74,17 @@ public class CursorManagerScript : MonoBehaviour
         inventoryCanvasGroup.interactable = true;
         inventoryCanvasGroup.blocksRaycasts = true;
         isInventoryOpen = true;
-         Cursor.visible = true;
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void CheckWhatToDo(ItemScript itemToPlaceInHand)
     {
-        if (itemInHand == null) 
+        if (itemInHand == null)
         {
             AddItemToHand(itemToPlaceInHand);
-        }else
+        }
+        else
         {
             print("Hand Full!!");
         }
@@ -120,25 +120,36 @@ public class CursorManagerScript : MonoBehaviour
 
     public void RemoveMemory()
     {
-        if(lastSlot != null)
+        if (lastSlot != null)
         {
             lastSlot = null;
         }
     }
-    void FindEmptySlot(ItemScript itemToAdd)
+
+    public void FindEmptySlot(ItemScript itemToAdd)
     {
         for (int i = 0; i < slots.Length; i++)
         {
             if (slots[i].itemInSlot == null) // Controleer of er nog geen item in het slot zit
             {
-                Debug.Log("Eerste lege slot gevonden op index: " + i);
-
                 // Roep AddItemToSlot aan vanuit het script van dit slot
                 slots[i].AddItemToSlot(itemToAdd);
                 itemToAdd = null;
+                found = true;
 
                 break; // Stop de loop zodra een leeg slot is gevonden
             }
+        }
+
+        if (!found)
+        {
+            offHandScript.DestroyItem();
+            print("Inventory is full");
+        }
+        else
+        {
+            offHandScript.DestroyPowerUp();
+            found = false;
         }
     }
 }
